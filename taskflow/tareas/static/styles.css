@@ -1,0 +1,27 @@
+
+.custom-image {
+    max-width: 100%;
+    height: auto;
+    width: 200px;
+    display: block;
+    margin: 0 auto;
+    }
+
+.post-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.post-card {
+    border: 1px solid #ccc;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.card-buttons {
+    margin-top: auto;
+    display: flex;
+    justify-content: space-between;
+}

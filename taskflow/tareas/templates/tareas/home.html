@@ -1,0 +1,66 @@
+{% extends "tareas/base.html" %}
+{% load static %}
+{% block content %}
+
+
+
+    <h1>bienvenido {{user.username}}</h1>
+    <div class="container">
+        <section class="section-content py-3">
+            <div class="row">
+                <aside class="col-lg-3"> 
+        <!-- ============= COMPONENT ============== -->
+                    <nav class="sidebar card py-2">
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'crear_posteo' %}"> Crear Tarea </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#"> About page </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'logout' %}">logout</a>
+                        </li>
+                    </ul>
+                    </nav>
+        <!-- ============= COMPONENT END// ============== -->	
+                </aside>
+                <main class="col-lg-9">
+                    <div>
+                        {% for message in messages %}
+                            <script>alert('{{message}}')</script>
+                        {% endfor %}
+                    </div>
+                    <br>
+                    
+                    <form action="" method='GET'>
+                        <input type="text" name='segundo_filtro'>
+                        <button type="submit">Enviar</button>
+                    </form>
+                    <div class="post-grid">
+                        {% for post in context %}
+                            <div class="post-card">
+                                <p>{{post.title}}</p>
+                                <p>{{post.content}}</p>
+                                <div class="card-buttons">
+                                    <a class="btn btn-primary" href="{% url 'modificar_posteo' post.id %}">Modificar</a>
+                                    <form action="{% url 'eliminar_posteo' post.id %}" method='POST'>
+                                        {% csrf_token %}
+                                        <button class="btn btn-danger" type="submit">Eliminar</button>
+                                    </form>
+                                    
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                </main>
+            </div>
+        </section>
+    </div>
+
+            
+
+
+
+{% endblock content %}
