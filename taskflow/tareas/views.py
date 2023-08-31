@@ -43,3 +43,10 @@ class PostDeleteView(DeleteView):
     model = Post
     success_url = reverse_lazy('home')
 
+def cambiar_status(request, id):
+    post = Post.objects.get(pk=id)
+    if request.method == 'POST':
+        post.tzone = 'Completada'
+        post.save()
+        return redirect('home')
+

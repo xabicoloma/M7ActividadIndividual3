@@ -62,7 +62,10 @@
                                                 <h6>{{ post.tzone }}</h6>
                                                 <p>{{ post.content }}</p>
                                                 <div class="card-buttons">
-                                                    <a class="btn btn-primary disabled" href="{% url 'home' %}">Completar</a>
+                                                    <form action="{% url 'cambiar_status' post.id %}" method='POST'>
+                                                        {% csrf_token %}
+                                                        <button class="btn btn-primary" type="submit">Completar</button>
+                                                    </form>
                                                     <a class="btn btn-success" href="{% url 'modificar_posteo' post.id %}">Modificar</a>
                                                     <a class="btn btn-info" href="{% url 'home' %}">Retomar</a>
                                                     <form action="{% url 'eliminar_posteo' post.id %}" method='POST'>
