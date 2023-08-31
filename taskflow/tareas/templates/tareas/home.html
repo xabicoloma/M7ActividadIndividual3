@@ -27,16 +27,6 @@
                 </aside>
                 <main class="col-lg-9">
                     <div>
-                        <ul>
-                            {% for message in messages %}
-                                <li><script>alert('{{message}}')</script></li>
-                            {% endfor %}
-                        </ul>
-                        <br>
-                        <form action="" method='GET'>
-                            <input type="text" name='segundo_filtro'>
-                            <button type="submit">Enviar</button>
-                        </form>
                         <div class="post-grid">
                             {% for post in context %}
                                 <div class="post-card">
