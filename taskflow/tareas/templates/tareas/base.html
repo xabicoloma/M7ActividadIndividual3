@@ -10,6 +10,7 @@
     <title>Document</title>
 </head>
 <body>
+    
     <nav class="navbar navbar-expand-sm navbar-dark bg-dark ">
         <div class="container-fluid">
             <div class="container-fluid">
@@ -18,34 +19,31 @@
                 </a>
             </div>
             <div class="collapse navbar-collapse" id="mynavbar">
-            <ul class="navbar-nav me-auto">
-                <li class="nav-item">
-                <a class="nav-link" href="javascript:void(0)">Link</a>
-                </li>
-                <li class="nav-item">
-                <a class="nav-link" href="javascript:void(0)">Link</a>
-                </li>
-                <li class="nav-item">
-                <a class="nav-link" href="javascript:void(0)">Link</a>
-                </li>
-            </ul>
-            <form class="d-flex">
-                <a href="{%url 'login' %}"><button class="btn btn-primary" type="button">Login</button></a>
-            </form>
+                <form class="d-flex">
+                    {% if user.is_authenticated %}
+                    <span class="navbar-text"> Has iniciado sesión como {{user.username}}</span>
+                    <a href="{% url 'home' %}"><button class="btn btn-primary" type="button">Home</button></a>
+                    {% else %}
+                    <a href="{%url 'login' %}"><button class="btn btn-primary" type="button">Login</button></a>
+                    {% endif %}
+                </form>
             </div>
         </div>
     </nav>
-    <main>
-
+    <main class="content">
+        {% block content %}
+        {% endblock content %}
     </main>
-    {% block content %}
-    {% endblock content %}
+
     <footer>
-        <div class="mt-5 p-4 bg-dark text-white text-center">
-            <p>Footer</p>
-        </div>
+        <footer class="footer">
+            <div class="p-4">
+                <p>Footer</p>
+            </div>
     </footer>
 </body>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js" integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/" crossorigin="anonymous"></script>
-</html>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    </html>
